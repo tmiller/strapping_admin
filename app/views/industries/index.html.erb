@@ -1,25 +1,19 @@
 <h1>Listing industries</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Color</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @industries.each do |industry| %>
-  <tr>
-    <td><%= industry.name %></td>
-    <td><%= industry.color %></td>
-    <td><%= link_to 'Show', industry %></td>
-    <td><%= link_to 'Edit', edit_industry_path(industry) %></td>
-    <td><%= link_to 'Destroy', industry, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id='industries'>
+    <%= render @industries %>
+  </tbody>
 </table>
+<div id="industries-pagination">
+  <%= paginate(@industries, window: 2, theme: 'admin', remote:true)%>
+</div>
 
-<br />
 
-<%= link_to 'New Industry', new_industry_path %>
+<%= link_to 'New Industry', new_industry_path, class: 'btn btn-primary'%>

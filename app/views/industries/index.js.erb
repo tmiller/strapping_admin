@@ -1,0 +1,2 @@
+$('#industries').html('<%= j(render @industries) %>');
+$('#industries-pagination').html('<%= j(paginate(@industries, window: 2, theme: 'admin', remote: true)) %>');

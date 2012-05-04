@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>StrappingAdmin</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,8 +7,56 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Some Store</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Browse Products", industries_path %></li>
+            <li><%= link_to "Price List" %></li>
+            <li><%= link_to "Contact Us" %></li>
+            <li><%= link_to "Cart" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <%= yield %>
+      </div>
+      <div class="span3">
+        <!-- start slipsum code -->
 
-<%= yield %>
+        <h1>Uuummmm, this is a tasty burger!</h1>
+
+        <p>
+          You see? It's curious. Ted did figure it out - time travel. And when we
+          get back, we gonna tell everyone. How it's possible, how it's done,
+          what the dangers are. But then why fifty years in the future when the
+          spacecraft encounters a black hole does the computer call it an
+          'unknown entry event'? Why don't they know? If they don't know, that
+          means we never told anyone. And if we never told anyone it means we
+          never made it back. Hence we die down here. Just as a matter of
+          deductive logic.
+        </p>
+
+        <!-- please do not remove this line -->
+
+        <div style="display:none;">
+        <a href="http://slipsum.com">lorem ipsum</a></div>
+
+        <!-- end slipsum code -->
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

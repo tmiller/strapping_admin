@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to industry.name, industry %></td>
+  <td>
+    <%= link_to 'Edit', edit_industry_path(industry), class: 'btn btn-mini' %>
+    <%= link_to 'Destroy', industry, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini btn-danger' %>
+  </td>
+</tr>
