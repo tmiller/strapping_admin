@@ -1,29 +1,20 @@
 class IndustriesController < ApplicationController
-  # GET /industries
-  # GET /industries.json
+
   def index
-    @industries = Industry.page(params[:page]).per(10)
   end
 
-  # GET /industries/1
-  # GET /industries/1.json
   def show
     @industry = Industry.find(params[:id])
   end
 
-  # GET /industries/new
-  # GET /industries/new.json
   def new
     @industry = Industry.new
   end
 
-  # GET /industries/1/edit
   def edit
     @industry = Industry.find(params[:id])
   end
 
-  # POST /industries
-  # POST /industries.json
   def create
     @industry = Industry.new(params[:industry])
 
@@ -34,8 +25,6 @@ class IndustriesController < ApplicationController
     end
   end
 
-  # PUT /industries/1
-  # PUT /industries/1.json
   def update
     @industry = Industry.find(params[:id])
 
@@ -46,11 +35,16 @@ class IndustriesController < ApplicationController
     end
   end
 
-  # DELETE /industries/1
-  # DELETE /industries/1.json
   def destroy
     @industry = Industry.find(params[:id])
     @industry.destroy
-    redirect_to industries_url
   end
+
+  private
+  def industries
+    @industries ||= Industry.page(params[:page]).per(10)
+  end
+
+  helper_method :industries
+
 end

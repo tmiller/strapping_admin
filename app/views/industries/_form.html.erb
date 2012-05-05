@@ -1,25 +1,11 @@
-<%= form_for(@industry) do |f| %>
-  <% if @industry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@industry.errors.count, "error") %> prohibited this industry from being saved:</h2>
-
-      <ul>
-      <% @industry.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for(@industry, html: { class: 'form-horizontal' }) do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Industries</legend>
+    <%= f.input :name %>
+    <%= f.input :color %>
+    <div class="form-actions">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', industries_path, class: 'btn' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </fieldset>
 <% end %>

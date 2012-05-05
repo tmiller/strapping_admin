@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody id='industries'>
-    <%= render @industries %>
+    <%= render industries %>
   </tbody>
 </table>
 <div id="industries-pagination">
-  <%= paginate(@industries, window: 2, theme: 'admin', remote:true)%>
+  <%= paginate(industries, window: 2, theme: 'admin', remote:true)%>
 </div>
 
 

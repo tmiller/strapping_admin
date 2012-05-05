@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.0.2'
+gem 'simple_form', '~> 2.0.2'
 
 
 # Gems used only for assets and not required

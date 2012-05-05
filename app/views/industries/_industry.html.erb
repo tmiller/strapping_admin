@@ -1,7 +1,11 @@
 <tr>
   <td><%= link_to industry.name, industry %></td>
   <td>
-    <%= link_to 'Edit', edit_industry_path(industry), class: 'btn btn-mini' %>
-    <%= link_to 'Destroy', industry, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini btn-danger' %>
+    <%= link_to edit_industry_path(industry), class: 'btn btn-mini' do %>
+      <i class="icon-pencil"></i> Edit
+    <% end %>
+    <%= link_to industry, confirm: 'Really Delete?', method: :delete, remote: true, class: 'btn btn-mini btn-danger' do %>
+      <i class="icon-trash icon-white"></i>
+    <% end %>
   </td>
 </tr>
