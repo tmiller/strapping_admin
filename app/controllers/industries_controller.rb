@@ -38,6 +38,10 @@ class IndustriesController < ApplicationController
   def destroy
     @industry = Industry.find(params[:id])
     @industry.destroy
+    respond_to do |format|
+      format.html { redirect_to industries_url }
+      format.js
+    end
   end
 
   private

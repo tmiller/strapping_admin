@@ -2,15 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-
 jQuery ->
-
   jQuery.rails.confirm = -> true
-
-  jQuery('a[data-confirm]:not([data-confirmed])').one 'ajax:before', () ->
-    elem = jQuery this
-    elem.removeClass('btn-danger')
-    elem.addClass('btn-success')
-    elem.append ' ' + elem.data('confirm') 
-    elem.attr('data-confirmed', true)
-    false
+  jQuery('#industries').on 'ajax:before',
+    'a[data-confirm]:not([data-confirmed])',
+    ->
+      elem = jQuery @
+      elem.toggleClass('btn-danger btn-success')
+      elem.append " #{elem.data('confirm')}"
+      elem.attr 'data-confirmed', true
+      elem.off 'ajax:before'
+      false
