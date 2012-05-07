@@ -1,11 +1,11 @@
-<tr>
+<%= content_tag_for :tr, industry do %>
   <td><%= link_to industry.name, industry %></td>
-  <td>
+  <td class="list-actions">
     <%= link_to edit_industry_path(industry), class: 'btn btn-mini' do %>
       <i class="icon-pencil"></i> Edit
     <% end %>
-    <%= link_to industry, confirm: 'Really Delete?', method: :delete, remote: true, class: 'btn btn-mini btn-danger' do %>
+    <%= link_to industry_path(industry, page: industries.current_page), confirm: 'Really Delete?', method: :delete, remote: true, class: 'btn btn-mini btn-danger' do %>
       <i class="icon-trash icon-white"></i>
     <% end %>
   </td>
-</tr>
+<% end %>

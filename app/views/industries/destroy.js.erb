@@ -1,1 +1,5 @@
-jQuery('.active a').click();
+jQuery('#<%= j(dom_id @industry) %>').fadeOut(function(){
+  <% if industries.count == 10 %>
+    jQuery('#industries').append('<%= j(render(partial: industries.last)) %>');
+  <% end %>
+});

@@ -5,11 +5,16 @@
 jQuery ->
   jQuery.rails.confirm = -> true
   jQuery('#industries').on 'ajax:before',
-    'a[data-confirm]:not([data-confirmed])',
+    'a[data-confirm]:not([confirmed])',
     ->
       elem = jQuery @
       elem.toggleClass('btn-danger btn-success')
-      elem.append " #{elem.data('confirm')}"
-      elem.attr 'data-confirmed', true
+      elem.css textAlign: 'left'
+      elem.animate
+        width: 87
+        ->
+          elem.append(" #{elem.data('confirm')}")
+          elem.css textAlign: 'center'
+      elem.attr 'confirmed', true
       elem.off 'ajax:before'
       false
