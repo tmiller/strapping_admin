@@ -4,28 +4,28 @@
 
 jQuery ->
 
-  confirmOff = (elem) ->
-    elem.removeAttr 'confirmed'
-    elem.html '<i class="icon-trash icon-white"></i>'
-    elem.css textAlign: 'left'
-    elem.animate width: 14, ->
-      elem.css textAlign: ''
-      elem.toggleClass 'btn-danger btn-success'
+  jQuery.rails.allowAction = (element) -> 
+    if not element.data('confirm') or element.data('confirmed') and not element.data('animating')
+      return true
+    else if not element.data 'animating'
+      element.data 'animating', true
+      element.css textAlign: 'left'
+      element.animate width: 87, ->
+        element.data 'confirmed', true
+        element.append(" #{element.data('confirm')}")
+        element.toggleClass('btn-danger btn-success')
+        element.css textAlign: ''
+        element.removeData 'animating'
 
-  confirm = ->
-    elem = jQuery @
-    elem.toggleClass('btn-danger btn-success')
-    elem.css textAlign: 'left'
-    elem.animate width: 87, ->
-      elem.append(" #{elem.data('confirm')}")
-      elem.css textAlign: ''
-    elem.attr 'confirmed', true
-    elem.off 'ajax:before'
-    setTimeout confirmOff, 5000, elem
+      undo = =>
+        element.removeData 'confirmed'
+        element.toggleClass 'btn-danger btn-success'
+        element.css textAlign: 'left'
+        element.html '<i class="icon-trash icon-white"></i>'
+        element.animate width: 14, ->
+          element.css textAlign: ''
+
+      setTimeout undo, 5000
     false
 
-  jQuery.rails.confirm = -> true
 
-  jQuery('#industries').on 'ajax:before',
-    'a[data-confirm]:not([confirmed])',
-    confirm
